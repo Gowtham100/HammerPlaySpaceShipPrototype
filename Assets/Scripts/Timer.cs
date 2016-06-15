@@ -30,17 +30,18 @@ public class Timer : MonoBehaviour {
 	void Update () {
         if (isMoving)
         {
-            if (time >= 0)
+            if (time > 0)
             {
                 timer.fillAmount -= speed / time;
               
                 totalLife = timer.fillAmount;
 
             }
+            
         }
         if (!isMoving)
         {
-            if (time >= 0)
+            if (time > 0)
             {
                 timer.fillAmount += regen / time;
                 
@@ -55,8 +56,12 @@ public class Timer : MonoBehaviour {
             totalLife = timer.fillAmount;
         }
 
- 
-	}
+        if (totalLife == 0)
+        {
+            Application.LoadLevel(2);
+        }
+
+    }
 
     }
 
