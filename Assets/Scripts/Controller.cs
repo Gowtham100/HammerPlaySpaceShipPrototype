@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
@@ -11,12 +12,19 @@ public class Controller : MonoBehaviour
     private float boostSpeed = 17f;
     public GameObject Bullet;
     public GameObject Explosion;
+    public Timer move;
+
+ 
+
+    private Rigidbody2D moving;
 
 
     // Use this for initialization
     void Start()
     {
-
+        moving = GetComponent<Rigidbody2D>();
+       
+       
     }
 
     // Update is called once per frame
@@ -25,10 +33,12 @@ public class Controller : MonoBehaviour
         //Code for speed booster
         if (Input.GetKeyDown("left shift"))
         {
+            move.isMovingFast = true;
             Speed = boostSpeed;
         }
         else if (Input.GetKeyUp("left shift"))
         {
+            move.isMovingFast = false;
             Speed = normalSpeed;
         }
         Movement();
@@ -39,6 +49,14 @@ public class Controller : MonoBehaviour
             Instantiate(Bullet, transform.position, transform.rotation);
         }
 
+       if (moving.IsSleeping())
+        {
+            move.isMoving = false;
+        }
+       else
+        {
+            move.isMoving = true;
+        }
     }
 
     public void Movement()
@@ -64,6 +82,9 @@ public class Controller : MonoBehaviour
            Debug.Log("Ouch");
             Destroy(gameObject);
             Instantiate(Explosion, transform.position, transform.rotation);
+            Application.LoadLevel(2);
+           
+
         }
     }
    
