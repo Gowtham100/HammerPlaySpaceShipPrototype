@@ -49,15 +49,16 @@ public class Controller : MonoBehaviour
             Instantiate(Bullet, transform.position, transform.rotation);
         }
 
-       if (moving.IsSleeping())
+        if (moving.IsSleeping())
         {
             move.isMoving = false;
         }
-       else
+        else
         {
             move.isMoving = true;
         }
-    }
+        }
+    
 
     public void Movement()
     {
