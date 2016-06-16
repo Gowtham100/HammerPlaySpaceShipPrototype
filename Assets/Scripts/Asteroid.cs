@@ -8,7 +8,6 @@ public class Asteroid : MonoBehaviour {
     public float maxForce = 10f;
     private Rigidbody2D rb;
     public GameObject Explosion;
-    public Timer regen;
     public GameObject MiniAst;
 
     

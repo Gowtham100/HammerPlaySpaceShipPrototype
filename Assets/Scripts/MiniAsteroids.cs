@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MiniAsteroids : Asteroid {
 
+    
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +21,8 @@ public class MiniAsteroids : Asteroid {
         {
             Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(gameObject);
+            MiniAst.SetActive(false);
+
         }
     }
 }
