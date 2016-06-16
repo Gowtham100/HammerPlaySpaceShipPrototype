@@ -23,14 +23,20 @@ public class AsteroidRotation : MonoBehaviour
     {
         if (col.gameObject.tag == "Bullet")
         {
+            StartCoroutine("Delay");
 
             gameObject.SetActive(false);
             Instantiate(Explosion, transform.position, transform.rotation);
-            LoadMainScene();
+            
 
         }
     }
-
+    IEnumerator Delay()
+    {
+        LoadMainScene();
+        yield return new WaitForSeconds(2);
+        
+    }
     public void LoadMainScene()
     {
         SceneManager.LoadScene(1);
