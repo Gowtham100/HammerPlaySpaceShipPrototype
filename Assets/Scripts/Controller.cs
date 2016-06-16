@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     public GameObject Bullet;
     public GameObject Explosion;
     public Timer move;
+    public GameObject engineParticle;
 
  
 
@@ -52,10 +53,13 @@ public class Controller : MonoBehaviour
         if (moving.IsSleeping())
         {
             move.isMoving = false;
+            engineParticle.SetActive(false);
+
         }
         else
         {
             move.isMoving = true;
+            engineParticle.SetActive(true);
         }
         }
     
