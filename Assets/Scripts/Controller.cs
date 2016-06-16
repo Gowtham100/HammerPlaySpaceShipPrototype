@@ -84,13 +84,22 @@ public class Controller : MonoBehaviour
     {
         if (col.gameObject.tag=="Ast")
         {
-           Debug.Log("Ouch");
+
             Destroy(gameObject);
             Instantiate(Explosion, transform.position, transform.rotation);
-            Application.LoadLevel(2);
+            StartCoroutine("Delay");
+           Debug.Log("Ouch");
+            
            
 
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3);
+       
+        Application.LoadLevel(2);
     }
    
 
